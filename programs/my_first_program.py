@@ -1,12 +1,15 @@
 from nada_dsl import *
 
-
 def nada_main():
     party1 = Party(name="Party1")
     my_int1 = SecretInteger(Input(name="my_int1", party=party1))
     my_int2 = SecretInteger(Input(name="my_int2", party=party1))
 
-    # write the computation for your program here - use my_int1 and my_int2 as inputs
-    # make sure you change the output below to be your new output
+    if my_int1 > my_int2:
+        comparison_result = my_int1
+    elif my_int1 < my_int2:
+        comparison_result = my_int2
+    else:
+        comparison_result = 0
 
-    return [Output(my_int1, "my_output", party1)]
+    return [Output(comparison_result, "comparison_output", party1)]
